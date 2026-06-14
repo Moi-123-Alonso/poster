@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Póster Científico - VecindApp</title>
+    <!-- Google Fonts para tipografía académica y moderna -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <!-- Tailwind CSS CDN para el diseño -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- FontAwesome para íconos -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        uss: {
+                            navy: '#005088',    /* Azul Institucional USS */
+                            cream: '#F3F0DF',   /* Fondo Crema USS */
+                            accent: '#11caa0',  /* Verde Científico */
+                            dark: '#1e293b',    /* Gris Oscuro Contraste */
+                            light: '#fcfbf7'    /* Fondo de Bloques */
+                        }
+                    },
+                    fontFamily: {
+                        academic: ['Cinzel', 'serif'],
+                        sans: ['Plus Jakarta Sans', 'sans-serif']
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Estilo para asegurar proporciones de póster científico (Relación de aspecto A0/A1 Horizontal) */
+        .poster-canvas {
+            width: 1400px;
+            height: 990px;
+            background-color: #F3F0DF;
+            background-image: radial-gradient(rgba(0, 80, 136, 0.03) 1px, transparent 0);
+            background-size: 24px 24px;
+        }
+
+        @media print {
+            body {
+                background: none;
+                padding: 0;
+                margin: 0;
+            }
+
+            .poster-canvas {
+                width: 100%;
+                height: 100%;
+                box-shadow: none;
+                border-radius: 0;
+            }
+        }
+
+        /* Imágenes de mockup: altura fija para que no desborden el canvas */
+        .mockup-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            object-position: top;
+            display: block;
+            flex-shrink: 0;
+        }
+    </style>
+</head>
+
+<body class="bg-slate-800 min-h-screen flex items-center justify-center p-6 font-sans antialiased text-uss-dark">
+
+    <!-- LIENZO ÚNICO DE PÓSTER CIENTÍFICO (1400px x 990px) -->
+    <div
+        class="poster-canvas p-5 flex flex-col justify-between shadow-2xl rounded-lg border-4 border-uss-navy relative overflow-hidden">
+
+        <!-- Marca de agua institucional sutil en el fondo -->
+        <div class="absolute inset-0 flex items-center justify-center opacity-5 pointer-events-none z-0">
+            <i class="fa-solid fa-graduation-cap text-[500px] text-uss-navy"></i>
+        </div>
+
+        <div class="z-10 flex flex-col justify-between h-full">
+
+            <!-- 1. ENCABEZADO (Full-Width) -->
+            <header
+                class="border-b-4 border-uss-navy pb-4 flex justify-between items-center bg-uss-light/80 backdrop-blur-sm p-4 rounded-lg shadow-sm">
+                <div class="flex-1">
+                    <span class="text-xs font-bold tracking-wider text-uss-accent uppercase">Persona y Sociedad ·
+                        Proyecto de Innovación Social</span>
+                    <h1 class="font-academic text-3xl font-extrabold text-uss-navy leading-tight mt-1">
+                        VecindApp: Plataforma Digital de Intercambio Solidario
+                    </h1>
+                    <p class="text-lg font-semibold text-uss-dark/80 mt-1">
+                        Fortalecimiento del Capital Social Comunitario Mediante el Uso de Tecnología Ética
+                    </p>
+                    <p class="text-xs text-uss-navy/70 font-medium mt-1">
+                        Moisés Vásquez · Valentina Hernández · Benjamín Maldonado · Francisco Nomán · Sebastián Valbuena
+                    </p>
+                </div>
+                <!-- Sello USS y Filiación -->
+                <div class="flex items-center gap-4 border-l-2 border-uss-navy/20 pl-4 ml-4">
+                    <div class="text-right">
+                        <span class="block text-xs font-bold text-uss-navy">UNIVERSIDAD San Sebastián</span>
+                        <span class="block text-[10px] text-gray-500">Facultad de Ingeniería · Ing. Civil
+                            Informática</span>
+                        <span class="block text-[10px] text-gray-500">Grupo 12 · NRC 2026 </span>
+                    </div>
+                    <img src="imagenes/images.png" alt="Logo Universidad San Sebastián"
+                        class="h-16 w-auto object-contain">
+                </div>
+            </header>
+
+            <!-- 2. RESUMEN / ABSTRACT (Full-Width) -->
+            <section class="bg-uss-light border border-uss-navy/20 p-4 rounded-lg my-2 shadow-sm">
+                <h2
+                    class="text-xs font-bold text-uss-navy uppercase tracking-wider border-b border-uss-accent/30 pb-1 mb-2">
+                    <i class="fa-solid fa-file-contract mr-1 text-uss-accent"></i> Resumen / Abstract
+                </h2>
+                <p class="text-xs leading-relaxed text-justify">
+                    El presente trabajo expone el desarrollo de <strong>VecindApp</strong>, una plataforma digital
+                    comunitaria diseñada para facilitar el intercambio solidario de favores, servicios y artículos en
+                    desuso entre vecinos, prescindiendo explícitamente de toda intermediación monetaria o créditos. Ante
+                    la creciente fragmentación del tejido urbano y la mercantilización de los vínculos cotidianos, la
+                    herramienta ofrece un espacio intuitivo de publicación de ofertas y solicitudes de asistencia
+                    directa. La iniciativa se fundamenta en la antropología política aristotélica que concibe al ser
+                    humano como un ser social por naturaleza. Se implementó un Producto Mínimo Viable (MVP) en una
+                    comunidad piloto real, cuyos resultados operativos evidencian la factibilidad técnica y social de la
+                    propuesta, validando que la tecnología puede actuar como un catalizador eficiente del bien común
+                    cuando se estructura desde la ética.
+                </p>
+            </section>
+
+            <!-- 3. CUERPO DEL PÓSTER (Split en 2 Columnas Simétricas) -->
+            <div class="grid grid-cols-2 gap-4 flex-grow my-0">
+
+                <!-- COLUMNA IZQUIERDA: INTRODUCCIÓN + METODOLOGÍA -->
+                <div class="flex flex-col justify-between gap-3">
+
+                    <!-- BLOQUE INTRODUCCIÓN -->
+                    <div class="bg-uss-light p-4 rounded-lg border border-uss-navy/15 flex-grow">
+                        <h2
+                            class="text-xs font-bold text-uss-navy uppercase tracking-wider border-b-2 border-uss-navy pb-1 mb-2">
+                            <i class="fa-solid fa-circle-info mr-1 text-uss-navy"></i> Introducción
+                        </h2>
+                        <p class="text-xs leading-relaxed text-justify mb-2">
+                            El debilitamiento de los lazos comunitarios en los entornos urbanos constituye un fenómeno
+                            ampliamente documentado. La creciente individualización y las dinámicas puramente
+                            mercantiles erosionan la <strong>Philia cívica</strong> —amistad civil—, concepto que
+                            Aristóteles consideraba condición esencial para la existencia de la sociedad.
+                        </p>
+                        <!-- Pequeño recuadro destacado de fundamentos teóricos para dar rigurosidad académica -->
+                        <div
+                            class="bg-uss-cream/50 p-2 rounded border-l-4 border-uss-navy text-[11px] grid grid-cols-3 gap-2 mt-2">
+                            <div>
+                                <span class="font-bold text-uss-navy block"><i class="fa-solid fa-users"></i> Philia
+                                    Cívica</span>
+                                Superación de la soledad y utilitarismo urbano.
+                            </div>
+                            <div>
+                                <span class="font-bold text-uss-navy block"><i class="fa-solid fa-heart"></i> Amor
+                                    Ágape</span>
+                                Relaciones humanas exentas de valor de cambio.
+                            </div>
+                            <div>
+                                <span class="font-bold text-uss-navy block"><i class="fa-solid fa-landmark"></i> Animal
+                                    Político</span>
+                                Bien común mediante cooperación voluntaria.
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- BLOQUE METODOLOGÍA (Plan de Trabajo Visual de 5 Pasos) -->
+                    <div class="bg-uss-light p-4 rounded-lg border border-uss-navy/15">
+                        <h2
+                            class="text-xs font-bold text-uss-navy uppercase tracking-wider border-b-2 border-uss-navy pb-1 mb-2">
+                            <i class="fa-solid fa-gears mr-1 text-uss-navy"></i> Metodología (Plan de Trabajo)
+                        </h2>
+                        <p class="text-[11px] text-gray-500 mb-2">
+                            Investigación-acción participativa aplicada en comunidad piloto real (Edificio Las Palmas /
+                            Junta Vecinal Norte):
+                        </p>
+
+                        <!-- Línea de tiempo / Pasos -->
+                        <div class="grid grid-cols-5 gap-1 mt-1 text-center">
+                            <div class="bg-uss-cream/40 p-2 rounded border border-uss-navy/10 relative">
+                                <span class="text-[10px] font-bold text-uss-navy block">01. Diagnóstico</span>
+                                <span class="text-[9px] text-uss-accent block font-semibold">10-13 Mayo</span>
+                                <p class="text-[8px] text-gray-500 mt-1 leading-tight">Entrevistas e informe de
+                                    necesidades de 50 vecinos.</p>
+                            </div>
+                            <div class="bg-uss-cream/40 p-2 rounded border border-uss-navy/10">
+                                <span class="text-[10px] font-bold text-uss-navy block">02. Diseño</span>
+                                <span class="text-[9px] text-uss-accent block font-semibold">14-19 Mayo</span>
+                                <p class="text-[8px] text-gray-500 mt-1 leading-tight">Wireframes de interfaz y
+                                    requisitos técnicos.</p>
+                            </div>
+                            <div class="bg-uss-cream/40 p-2 rounded border border-uss-navy/10">
+                                <span class="text-[10px] font-bold text-uss-navy block">03. Desarrollo</span>
+                                <span class="text-[9px] text-uss-accent block font-semibold">20-24 Mayo</span>
+                                <p class="text-[8px] text-gray-500 mt-1 leading-tight">Codificación del MVP en GitHub.
+                                </p>
+                            </div>
+                            <div class="bg-uss-cream/40 p-2 rounded border border-uss-navy/10">
+                                <span class="text-[10px] font-bold text-uss-navy block">04. Lanzamiento</span>
+                                <span class="text-[9px] text-uss-accent block font-semibold">25-28 Mayo</span>
+                                <p class="text-[8px] text-gray-500 mt-1 leading-tight">Taller presencial y capacitación
+                                    in situ.</p>
+                            </div>
+                            <div class="bg-uss-cream/40 p-2 rounded border border-uss-navy/10">
+                                <span class="text-[10px] font-bold text-uss-navy block">05. Monitoreo</span>
+                                <span class="text-[9px] text-uss-accent block font-semibold">Junio 2026</span>
+                                <p class="text-[8px] text-gray-500 mt-1 leading-tight">Métricas y evaluación de impacto.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- COLUMNA DERECHA: RESULTADOS + CONCLUSIONES -->
+                <div class="flex flex-col justify-between gap-3">
+
+                    <!-- BLOQUE RESULTADOS -->
+                    <div class="bg-uss-light p-4 rounded-lg border border-uss-navy/15 flex-grow flex flex-col gap-2">
+                        <h2
+                            class="text-xs font-bold text-uss-navy uppercase tracking-wider border-b-2 border-uss-navy pb-1 mb-0">
+                            <i class="fa-solid fa-chart-column mr-1 text-uss-navy"></i> Resultados (Evidencias de la
+                            Plataforma)
+                        </h2>
+
+                        <!-- MOCKUPS REALES DE LA APLICACIÓN — 4 columnas -->
+                        <div class="grid grid-cols-4 gap-2 mt-0">
+
+                            <!-- Mockup 1: Pantalla de Inicio / Bienvenida -->
+                            <div class="rounded overflow-hidden border border-uss-navy/20 shadow-sm flex flex-col">
+                                <span
+                                    class="bg-uss-navy text-white text-[6.5px] font-bold uppercase tracking-wide px-1 py-1 text-center">1.
+                                    Inicio</span>
+                                <img src="imagenes/whatsapp_inicio.jpeg"
+                                    alt="Pantalla de Inicio VecindApp" class="mockup-img">
+                                <span
+                                    class="text-[6.5px] text-gray-500 text-center px-1 py-0.5 bg-uss-light leading-tight">Bienvenida
+                                    y menú</span>
+                            </div>
+
+                            <!-- Mockup 2: Muro Solidario / Feed -->
+                            <div class="rounded overflow-hidden border border-uss-navy/20 shadow-sm flex flex-col">
+                                <span
+                                    class="bg-uss-navy text-white text-[6.5px] font-bold uppercase tracking-wide px-1 py-1 text-center">2.
+                                    Muro Solidario</span>
+                                <img src="imagenes/whatsapp_muro.jpeg"
+                                    alt="Muro Solidario VecindApp" class="mockup-img">
+                                <span
+                                    class="text-[6.5px] text-gray-500 text-center px-1 py-0.5 bg-uss-light leading-tight">Feed
+                                    de publicaciones</span>
+                            </div>
+
+                            <!-- Mockup 3: Chat / Mensajería -->
+                            <div class="rounded overflow-hidden border border-uss-navy/20 shadow-sm flex flex-col">
+                                <span
+                                    class="bg-uss-navy text-white text-[6.5px] font-bold uppercase tracking-wide px-1 py-1 text-center">3.
+                                    Mensajería</span>
+                                <img src="imagenes/whatsapp_chat.jpeg"
+                                    alt="Chat Mensajería VecindApp" class="mockup-img">
+                                <span
+                                    class="text-[6.5px] text-gray-500 text-center px-1 py-0.5 bg-uss-light leading-tight">Chat
+                                    vecino a vecino</span>
+                            </div>
+
+                            <!-- Mockup 4: Dashboard Estadísticas -->
+                            <div class="rounded overflow-hidden border border-uss-navy/20 shadow-sm flex flex-col">
+                                <span
+                                    class="bg-uss-navy text-white text-[6.5px] font-bold uppercase tracking-wide px-1 py-1 text-center">4.
+                                    Estadísticas</span>
+                                <img src="imagenes/whatsapp_stats.jpeg"
+                                    alt="Dashboard Estadísticas VecindApp" class="mockup-img">
+                                <span
+                                    class="text-[6.5px] text-gray-500 text-center px-1 py-0.5 bg-uss-light leading-tight">Panel:
+                                    3 usuarios, 13%</span>
+                            </div>
+
+                        </div>
+                    </div>
+
+                    <!-- BLOQUE CONCLUSIONES -->
+                    <div class="bg-uss-light p-4 rounded-lg border border-uss-navy/15">
+                        <h2
+                            class="text-xs font-bold text-uss-navy uppercase tracking-wider border-b-2 border-uss-navy pb-1 mb-2">
+                            <i class="fa-solid fa-lightbulb mr-1 text-uss-navy"></i> Conclusiones
+                        </h2>
+                        <p class="text-xs leading-relaxed text-justify">
+                            VecindApp demuestra que la tecnología, orientada por principios éticos sólidos, puede
+                            fortalecer el capital social y la cohesión comunitaria local. El MVP operativo validó que
+                            los vecinos, contando con herramientas digitales accesibles, están dispuestos a relacionarse
+                            solidariamente sin transacciones comerciales de por medio. La prohibición absoluta del
+                            dinero demostró ser la variable de diseño clave para forzar la reciprocidad y rescatar la
+                            dimensión de la <em>Philia</em> aristotélica.
+                        </p>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- 4. PIE DEL PÓSTER: AGRADECIMIENTOS + REFERENCIAS (Dividido en 2) -->
+            <footer class="grid grid-cols-2 gap-4 border-t-2 border-uss-navy pt-3 mt-2 text-xs">
+
+                <!-- AGRADECIMIENTOS -->
+                <div class="bg-uss-light/50 p-2 rounded">
+                    <span class="font-bold text-uss-navy block uppercase text-[10px] tracking-wider mb-1">
+                        <i class="fa-solid fa-handshake mr-1 text-uss-accent"></i> Agradecimientos
+                    </span>
+                    <p class="text-[9px] text-gray-600 leading-normal">
+                        A la directiva vecinal de la Junta Vecinal Norte, a los residentes del Edificio Las Palmas por
+                        su participación en la validación empírica del MVP, y al Departamento de Formación Integral de
+                        la USS por guiar académicamente el proyecto hacia el bien común.
+                    </p>
+                </div>
+
+                <!-- REFERENCIAS BIBLIOGRÁFICAS -->
+                <div class="bg-uss-light/50 p-2 rounded">
+                    <span class="font-bold text-uss-navy block uppercase text-[10px] tracking-wider mb-1">
+                        <i class="fa-solid fa-book-open mr-1 text-uss-accent"></i> Referencias Bibliográficas (APA 7)
+                    </span>
+                    <ul class="text-[8px] text-gray-600 list-decimal pl-3 space-y-0.5 leading-tight">
+                        <li>Aristóteles. (2014). <em>Política</em> (trad. M. García Valdés). Editorial Gredos.</li>
+                        <li>Bauman, Z. (2003). <em>Comunidad: En busca de seguridad en un mundo hostil</em>. Siglo XXI
+                            Editores.</li>
+                        <li>Putnam, R. D. (2000). <em>Bowling Alone: The collapse and revival of American
+                                community</em>. Simon & Schuster.</li>
+                        <li>Sennett, R. (2012). <em>Together: The rituals, pleasures, and politics of cooperation</em>.
+                            Yale University Press.</li>
+                    </ul>
+                </div>
+
+            </footer>
+
+        </div>
+
+    </div>
+
+</body>
+
+</html>
